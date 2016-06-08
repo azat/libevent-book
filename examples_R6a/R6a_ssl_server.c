@@ -86,7 +86,7 @@ main(int argc, char **argv)
 
     memset(&sin, 0, sizeof(sin));
     sin.sin_family = AF_INET;
-    sin.sin_port = htons(9999);
+    sin.sin_port = htons(argc == 2 ? atoi(argv[1]) : 9999);
     sin.sin_addr.s_addr = htonl(0x7f000001); /* 127.0.0.1 */
 
     ctx = evssl_init();
