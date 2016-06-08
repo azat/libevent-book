@@ -97,6 +97,10 @@ main(int argc, char **argv)
                          evbase, ssl_acceptcb, (void *)ctx,
                          LEV_OPT_CLOSE_ON_FREE | LEV_OPT_REUSEABLE, 1024,
                          (struct sockaddr *)&sin, sizeof(sin));
+    if (!listener) {
+        puts("Couldn't bind");
+        return 1;
+    }
 
     event_base_loop(evbase, 0);
 
