@@ -44,6 +44,7 @@ ssl_acceptcb(struct evconnlistener *serv, int sock, struct sockaddr *sa,
                                          BEV_OPT_CLOSE_ON_FREE);
 
     bufferevent_enable(bev, EV_READ);
+    bufferevent_disable(bev, EV_WRITE);
     bufferevent_setcb(bev, ssl_readcb, NULL, NULL, NULL);
 }
 
